@@ -10,11 +10,11 @@ const ItemSeparator = () => <View style={{ height: 2 }}/>
 const Home = () => {
   return (
     <View>
-      <Text>List out items:</Text>
       <FlatList
         data={BILLS}
         renderItem={({item}) => renderItemComponent(item)}
         ItemSeparatorComponent={ItemSeparator}
+        keyExtractor={(item)=>item.name}
       />
     </View>
   );
