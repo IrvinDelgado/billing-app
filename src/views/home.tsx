@@ -1,15 +1,18 @@
 import React from 'react';
 import { FlatList, Text, View } from 'react-native';
 import Bill from '../components/Bill';
+import DonutChart from '../components/DonutChart';
 import { BILLS } from '../DummyData/BILLS';
+import { IBill } from '../models/IBill';
 
-const renderItemComponent = (data:any) => <Bill bill={data}/>
+const renderItemComponent = (data:IBill) => <Bill bill={data}/>
 
 const ItemSeparator = () => <View style={{ height: 2 }}/>
 
 const Home = () => {
   return (
     <View>
+      <DonutChart data={BILLS}/>
       <FlatList
         data={BILLS}
         renderItem={({item}) => renderItemComponent(item)}

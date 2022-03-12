@@ -22,5 +22,7 @@ While in BillingApp Directory run
 
 `yarn start`
 
-_**Install Expo Go on your phone**_
+_**Follow the terminals instructions**_
+
+_**Install Expo Go on your phone (Optional)**_
 Then run the application and use the QR code

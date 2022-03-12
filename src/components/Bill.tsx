@@ -1,13 +1,9 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
+import { IBill } from '../models/IBill';
 
 interface Bill {
-  bill: {
-    name: string,
-    cost: number,
-    isPaid: boolean,
-    dueDate: string,
-  }
+  bill: IBill;
 }
 
 const Bill = (props: Bill) => {
