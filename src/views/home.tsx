@@ -9,7 +9,10 @@ const renderItemComponent = (data:IBill) => <Bill bill={data}/>
 
 const ItemSeparator = () => <View style={{ height: 2 }}/>
 
-const Home = () => {
+const Home = ({navigation}: any) => {
+  const logout = () => {
+    navigation.navigate('Home');
+  }
   return (
     <View>
       <DonutChart data={BILLS}/>

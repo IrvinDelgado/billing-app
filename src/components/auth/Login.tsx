@@ -4,6 +4,11 @@ import { Text, View, TextInput, StyleSheet, TouchableOpacity } from 'react-nativ
 const Login = ({navigation}:any) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const login = () => {
+    navigation.navigate('Home');
+  }
+
   return (
     <View>
       <Text style={styles.header}>Login</Text>
@@ -19,7 +24,8 @@ const Login = ({navigation}:any) => {
         onChangeText={newText => setPassword(newText)}
         defaultValue={password}
       />
-      <TouchableOpacity style={styles.loginBtn}>
+      <TouchableOpacity style={styles.loginBtn}
+      onPress={login}>
         <Text style={styles.loginText}>LOGIN</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() =>
