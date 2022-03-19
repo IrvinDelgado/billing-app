@@ -59,7 +59,7 @@ const DonutChart = (props:DonutChart) => {
           {createPieChart()}
         </G>
       </Svg>
-      <Text style={styles.label}>{totalBills()}$</Text>
+      <Text style={styles.label}>${totalBills()}</Text>
     </View>
   );
 }
