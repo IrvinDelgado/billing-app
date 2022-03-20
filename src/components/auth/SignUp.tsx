@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { Text, View, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { styles } from '../../styles/main';
 
 const SignUp = ({navigation}:any) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confPassword, setConfPassword] = useState('');
   return (
-    <View>
-      <Text style={styles.header}>SignUp</Text>
+    <View style={styles.container}>
+      <Text style={styles.headerText}>SignUp</Text>
       <TextInput
         style={styles.TextInput}
         placeholder="email"
@@ -26,8 +27,8 @@ const SignUp = ({navigation}:any) => {
         onChangeText={newText => setConfPassword(newText)}
         defaultValue={confPassword}
       />
-      <TouchableOpacity style={styles.loginBtn}>
-        <Text style={styles.loginText}>SignUp</Text>
+      <TouchableOpacity style={styles.Button}>
+        <Text>SignUp</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() =>
         navigation.navigate('Login', { name: 'Jane' })
@@ -39,26 +40,3 @@ const SignUp = ({navigation}:any) => {
 }
 
 export default SignUp;
-
-const styles = StyleSheet.create({
-  header:{
-    fontSize: 30,
-    paddingBottom: 10,
-  },
-  TextInput: {
-    height: 30,
-    marginBottom: 20,
-    borderColor: 'black',
-    borderWidth: 1,
-  },
-  loginBtn: {
-   borderRadius:5,
-   height: 50,
-   alignItems:"center",
-   justifyContent:"center",
-   backgroundColor:"#5FF15F",
-  },
-  loginText: {
-    fontWeight: 'bold',
-  }
-});

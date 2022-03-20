@@ -4,6 +4,7 @@ import Bill from '../components/Bill';
 import DonutChart from '../components/DonutChart';
 import { BILLS } from '../DummyData/BILLS';
 import { IBill } from '../models/IBill';
+import { styles } from '../styles/main';
 
 const Home = ({navigation}: any) => {
   const [isLoading, setLoading] = useState(true);
@@ -31,7 +32,7 @@ const Home = ({navigation}: any) => {
   },[])
 
   return (
-    <View>
+    <View style={styles.container}>
       {isLoading ? <ActivityIndicator size={"large"}/>:(
         <View>
         <DonutChart data={data}/>

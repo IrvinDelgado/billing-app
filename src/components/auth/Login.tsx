@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Text, View, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { styles } from '../../styles/main';
 
 const Login = ({navigation}:any) => {
   const [email, setEmail] = useState('');
@@ -10,8 +11,7 @@ const Login = ({navigation}:any) => {
   }
 
   return (
-    <View>
-      <Text style={styles.header}>Login</Text>
+    <View style={styles.container}>
       <TextInput
         style={styles.TextInput}
         placeholder="email"
@@ -24,50 +24,17 @@ const Login = ({navigation}:any) => {
         onChangeText={newText => setPassword(newText)}
         defaultValue={password}
       />
-      <TouchableOpacity style={styles.loginBtn}
+      <TouchableOpacity style={styles.Button}
       onPress={login}>
-        <Text style={styles.loginText}>LOGIN</Text>
+        <Text>LOGIN</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() =>
         navigation.navigate('SignUp', { name: 'Jane' })
       }>
-        <Text style={styles.signUp}>SignUp</Text>
+        <Text>SignUp</Text>
       </TouchableOpacity>
     </View>
   );
 }
 
 export default Login;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  header:{
-    fontSize: 30,
-    paddingBottom: 10,
-  },
-  TextInput: {
-    height: 30,
-    marginBottom: 20,
-    borderColor: 'black',
-    borderWidth: 1,
-  },
-  loginBtn: {
-   borderRadius:5,
-   height: 50,
-   alignItems:"center",
-   justifyContent:"center",
-   backgroundColor:"#5FF15F",
-  },
-  loginText: {
-    fontWeight: 'bold',
-  },
-  signUp: {
-    height: 30,
-    marginTop: 30,
-  },
-});
