@@ -2,10 +2,10 @@ import React from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 import Svg, { G, Circle } from 'react-native-svg';
 import { IBill } from '../models/IBill';
+import { BILL_COLORS } from '../styles/theme';
 
 const RADIUS = 70;
 const CIRCLE_CIRCUMFERENCE = 2 * Math.PI * RADIUS;
-const COLORS = ["#F05454","#30475E","#222831","#82971D"];
 
 interface DonutChart {
   data: Array<IBill>
@@ -38,7 +38,7 @@ const DonutChart = (props:DonutChart) => {
             cx="50%"
             cy="50%"
             r={RADIUS}
-            stroke={COLORS[index]}
+            stroke={BILL_COLORS[index]}
             fill="transparent"
             strokeWidth="40"
             originX="90"

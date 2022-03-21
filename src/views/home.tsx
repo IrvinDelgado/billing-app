@@ -10,18 +10,15 @@ const Home = ({navigation}: any) => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState<Array<IBill>>([]);
 
-  const renderItemComponent = (data:IBill) => <Bill bill={data}/>
+  const renderItemComponent = (data:IBill, index:number) => <Bill bill={data} idx={index}/>
   const ItemSeparator = () => <View style={{ height: 2 }}/>
 
 
   // Mock Fetch API
   const getBills = () => {
     try {
-      setTimeout(()=>{
-        const result = BILLS;
-        setData(result);
-        setLoading(false);
-      }, 1000);
+      setData(BILLS);
+      setLoading(false);
     } catch (error) {
       console.error(error);
     }
@@ -38,7 +35,7 @@ const Home = ({navigation}: any) => {
         <DonutChart data={data}/>
         <FlatList
           data={data}
-          renderItem={({item}) => renderItemComponent(item)}
+          renderItem={({item, index}) => renderItemComponent(item, index)}
           ItemSeparatorComponent={ItemSeparator}
           keyExtractor={(item)=>item.name}
         />

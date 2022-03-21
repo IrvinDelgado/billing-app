@@ -1,14 +1,17 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { IBill } from '../models/IBill';
+import { BILL_COLORS } from "../styles/theme";
 
 interface Bill {
   bill: IBill;
+  idx: number;
 }
 
 const Bill = (props: Bill) => {
+  const billColor = BILL_COLORS[props.idx]
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { borderColor: billColor }]}>
       <View>
         <Text style={styles.header}>{props.bill.name}</Text>
         <Text style={styles.subtitle}>{props.bill.dueDate}</Text>
@@ -25,6 +28,7 @@ export default Bill;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#FFFFFF',
+    borderLeftWidth: 10,
     height: 50,
     width: 350,
     borderRadius: 5,
