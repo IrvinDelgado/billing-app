@@ -12,8 +12,9 @@ const Login = ({navigation}:any) => {
 
   return (
     <View style={styles.container}>
-      <Image style={styles.loginIcon} 
-      source={require('../../../assets/bunnyLogo.png')}/>
+      <Image 
+        style={styles.loginIcon} 
+        source={require('../../../assets/bunnyLogo.png')}/>
       <TextInput
         style={styles.TextInput}
         placeholder="Email"
@@ -26,14 +27,15 @@ const Login = ({navigation}:any) => {
         onChangeText={newText => setPassword(newText)}
         defaultValue={password}
       />
-      <TouchableOpacity style={styles.Button}
-      onPress={login}>
-        <Text>LOGIN</Text>
+      <TouchableOpacity 
+        style={styles.Button}
+        onPress={login}>
+        <Text style={styles.ButtonText}>LOGIN</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() =>
         navigation.navigate('SignUp')
       }>
-        <Text>SignUp</Text>
+        <Text style={styles.authOption}>SignUp</Text>
       </TouchableOpacity>
     </View>
   );

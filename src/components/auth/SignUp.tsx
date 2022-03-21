@@ -29,12 +29,12 @@ const SignUp = ({navigation}:any) => {
         defaultValue={confPassword}
       />
       <TouchableOpacity style={styles.Button}>
-        <Text>SignUp</Text>
+        <Text style={styles.ButtonText}>SignUp</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() =>
         navigation.navigate('Login')
       }>
-        <Text>SignIn</Text>
+        <Text style={styles.authOption}>SignIn</Text>
       </TouchableOpacity>
     </View>
   );

@@ -28,4 +28,15 @@ export const styles = StyleSheet.create({
     alignItems:"center",
     justifyContent:"center",
   },
+  ButtonText: {
+    fontWeight: 'bold',
+  },
+  authOption: {
+    marginTop: 50,
+    marginLeft: 175,
+    fontSize: 14,
+    color: theme.dark,
+    fontWeight: 'bold',
+    fontStyle: 'italic',
+  }
 });
