@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, FlatList, Text, View } from 'react-native';
+import { ActivityIndicator, Button, FlatList, Text, View } from 'react-native';
 import Bill from '../components/Bill';
 import DonutChart from '../components/DonutChart';
 import { BILLS } from '../DummyData/BILLS';
@@ -42,6 +42,7 @@ const Home = ({navigation}: any) => {
           ItemSeparatorComponent={ItemSeparator}
           keyExtractor={(item)=>item.name}
         />
+        <Button title='logout' onPress={()=>{navigation.navigate('Login')}}/>
         </View>
       )}
     </View>

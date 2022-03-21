@@ -12,14 +12,11 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login" screenOptions={{
-        headerStyle: {
-          backgroundColor: '#fff',
-        },
+        headerShown: false,
       }}>
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="Home" component={Home} options={({ navigation }: any) => ({ 
-          title: 'Home',
           headerLeft:()=>null,
           headerRight:()=>(<Button title='logout' onPress={()=>{navigation.navigate('Login')}}/>)
         })}/>

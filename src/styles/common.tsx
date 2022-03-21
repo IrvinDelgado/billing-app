@@ -1,13 +1,21 @@
-export const TextInput = {
-  height: 30,
+import { TextStyle } from "react-native"
+
+export const TextInput:TextStyle = {
   marginBottom: 20,
-  borderColor: 'black',
-  borderWidth: 1,
+  padding: 10,
+  width: 220,
+  borderRadius: 50,
+  shadowColor: 'black',
+  shadowOffset: {
+    width: 1,
+    height: 1,
+  },
+  shadowOpacity: .35,
+  shadowRadius: 10,
 }
 
 export const Button = {
   borderRadius:5,
   height: 50,
   width: 150,
-  backgroundColor:"#5FF15F",
 }

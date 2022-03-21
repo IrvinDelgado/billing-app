@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { Text, View, TextInput, TouchableOpacity, Image } from 'react-native';
 import { styles } from '../../styles/main';
 
 const SignUp = ({navigation}:any) => {
@@ -8,22 +8,23 @@ const SignUp = ({navigation}:any) => {
   const [confPassword, setConfPassword] = useState('');
   return (
     <View style={styles.container}>
-      <Text style={styles.headerText}>SignUp</Text>
+      <Image style={styles.loginIcon} 
+      source={require('../../../assets/bunnyLogo.png')}/>
       <TextInput
         style={styles.TextInput}
-        placeholder="email"
+        placeholder="Email"
         onChangeText={newText => setEmail(newText)}
         defaultValue={email}
       />
       <TextInput
         style={styles.TextInput}
-        placeholder="password"
+        placeholder="Password"
         onChangeText={newText => setPassword(newText)}
         defaultValue={password}
       />
       <TextInput
         style={styles.TextInput}
-        placeholder="confirm password"
+        placeholder="Confirm Password"
         onChangeText={newText => setConfPassword(newText)}
         defaultValue={confPassword}
       />
@@ -31,7 +32,7 @@ const SignUp = ({navigation}:any) => {
         <Text>SignUp</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() =>
-        navigation.navigate('Login', { name: 'Jane' })
+        navigation.navigate('Login')
       }>
         <Text>SignIn</Text>
       </TouchableOpacity>
