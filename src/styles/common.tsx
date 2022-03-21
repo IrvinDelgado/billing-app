@@ -3,6 +3,7 @@ import { TextStyle } from "react-native"
 export const TextInput:TextStyle = {
   marginBottom: 20,
   padding: 10,
+  paddingLeft: 15,
   width: 220,
   borderRadius: 50,
   shadowColor: 'black',

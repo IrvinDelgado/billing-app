@@ -38,5 +38,9 @@ export const styles = StyleSheet.create({
     color: theme.dark,
     fontWeight: 'bold',
     fontStyle: 'italic',
+  },
+  validateCredentials: {
+    color: '#e63946',
+    paddingBottom: 20,
   }
 });

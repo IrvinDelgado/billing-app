@@ -6,6 +6,25 @@ const SignUp = ({navigation}:any) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confPassword, setConfPassword] = useState('');
+  const [errMsg, setErrMsg] = useState('');
+
+  const validate = () => {
+    const emailRegExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/
+    if(!emailRegExp.test(email)) {
+      setErrMsg('Wrong Email pattern eg. email@gmail.com');
+      return
+    }
+    if(password.length<8) {
+      setErrMsg('Password Needs to be at least 8 characters');
+      return
+    }
+    if(password != confPassword) {
+      setErrMsg('Confirmed password not the same');
+      return
+    }
+    navigation.navigate('Login');
+  }
+
   return (
     <View style={styles.container}>
       <Image style={styles.loginIcon} 
@@ -28,7 +47,8 @@ const SignUp = ({navigation}:any) => {
         onChangeText={newText => setConfPassword(newText)}
         defaultValue={confPassword}
       />
-      <TouchableOpacity style={styles.Button}>
+      {errMsg===''? null :<Text style={styles.validateCredentials}>{errMsg}</Text>}
+      <TouchableOpacity style={styles.Button} onPress={()=>{validate()}}>
         <Text style={styles.ButtonText}>SignUp</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() =>
