@@ -1,17 +1,19 @@
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { IBill } from '../models/IBill';
 import { BILL_COLORS } from "../styles/theme";
 
 interface Bill {
   bill: IBill;
   idx: number;
+  navigation: any;
 }
 
 const Bill = (props: Bill) => {
   const billColor = BILL_COLORS[props.idx]
   return (
-    <View style={[styles.container, { borderColor: billColor }]}>
+    <TouchableOpacity style={[styles.container, { borderColor: billColor }]}
+      onPress={()=>{props.navigation.navigate('Login')}}>
       <View>
         <Text style={styles.header}>{props.bill.name}</Text>
         <Text style={styles.subtitle}>{props.bill.dueDate}</Text>
@@ -19,7 +21,7 @@ const Bill = (props: Bill) => {
       <View>
         <Text style={styles.cost}>${props.bill.cost}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 
