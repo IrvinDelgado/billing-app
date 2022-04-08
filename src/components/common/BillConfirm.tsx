@@ -1,8 +1,23 @@
-import React, { useState } from 'react';
-import { Alert, Modal, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Alert, Modal, View, Text, TouchableOpacity, StyleSheet, DeviceEventEmitter } from 'react-native';
+import { IBill } from '../../models/IBill';
 
 const BillConfirm = () => {
-  const [modalVisible, setModalVisible] = useState(true);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [bill, setBill] = useState({name:'', cost:0, isPaid: false, dueDate:''});
+
+  const handleEvent = async (bill:IBill) => {
+    setBill(bill)
+    setModalVisible(true);
+  }
+
+  useEffect(() => {
+    // Although Device Emitter is Deprecated we are using Expo so no Native Modules can be used 
+    DeviceEventEmitter.addListener('openModal',handleEvent);    
+  })
+  
+
+
   return (
     <Modal
         animationType="slide"
@@ -11,14 +26,19 @@ const BillConfirm = () => {
         onRequestClose={() => {
           Alert.alert("Modal has been closed.");
           setModalVisible(!modalVisible);
+          DeviceEventEmitter.removeAllListeners();
         }}
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>Confirm Payment!</Text>
+            <Text style={styles.modalText}>{bill.name} ${bill.cost} {bill.dueDate} {bill.isPaid}</Text>
             <TouchableOpacity
               style={[styles.button, styles.buttonClose]}
-              onPress={() => setModalVisible(!modalVisible)}
+              onPress={() => {
+                setModalVisible(!modalVisible);
+                DeviceEventEmitter.removeAllListeners();
+                }
+              }
             >
               <Text style={styles.textStyle}>Hide Modal</Text>
             </TouchableOpacity>

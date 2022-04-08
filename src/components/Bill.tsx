@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, DeviceEventEmitter } from 'react-native';
 import { IBill } from '../models/IBill';
 import { BILL_COLORS } from "../styles/theme";
 
@@ -13,7 +13,7 @@ const Bill = (props: Bill) => {
   const billColor = BILL_COLORS[props.idx]
   return (
     <TouchableOpacity style={[styles.container, { borderColor: billColor }]}
-      onPress={()=>{props.navigation.navigate('Login')}}>
+      onPress={()=>{DeviceEventEmitter.emit('openModal', props.bill)}}>
       <View>
         <Text style={styles.header}>{props.bill.name}</Text>
         <Text style={styles.subtitle}>{props.bill.dueDate}</Text>
