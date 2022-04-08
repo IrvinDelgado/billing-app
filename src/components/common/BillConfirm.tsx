@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Alert, Modal, View, Text, TouchableOpacity, StyleSheet, DeviceEventEmitter } from 'react-native';
+import { Modal, View, Text, TouchableOpacity, StyleSheet, DeviceEventEmitter } from 'react-native';
 import { IBill } from '../../models/IBill';
 
 const BillConfirm = () => {
@@ -24,23 +24,33 @@ const BillConfirm = () => {
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
           setModalVisible(!modalVisible);
           DeviceEventEmitter.removeAllListeners();
         }}
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>{bill.name} ${bill.cost} {bill.dueDate} {bill.isPaid}</Text>
+            <Text style={styles.modalText}>Bill:{bill.name}</Text>
+            <Text style={styles.modalText}>Amount Due: ${bill.cost}</Text>
             <TouchableOpacity
-              style={[styles.button, styles.buttonClose]}
+              style={[styles.button, styles.btnConfirm]}
               onPress={() => {
                 setModalVisible(!modalVisible);
                 DeviceEventEmitter.removeAllListeners();
                 }
               }
             >
-              <Text style={styles.textStyle}>Hide Modal</Text>
+              <Text style={styles.textStyle}>Confirm Payment</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.button, styles.btnCancel]}
+              onPress={() => {
+                setModalVisible(!modalVisible);
+                DeviceEventEmitter.removeAllListeners();
+                }
+              }
+            >
+              <Text style={styles.textStyle}>Cancel</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -55,7 +65,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 22,
+    backgroundColor: 'rgba(0,0,0,.7)',
   },
   modalView: {
     height: 250,
@@ -76,13 +86,15 @@ const styles = StyleSheet.create({
   button: {
     borderRadius: 20,
     padding: 10,
-    elevation: 2
+    elevation: 2,
+    width: 150,
+    marginBottom: 20
   },
-  buttonOpen: {
-    backgroundColor: "#F194FF",
-  },
-  buttonClose: {
+  btnConfirm: {
     backgroundColor: "#2196F3",
+  },
+  btnCancel:{
+    backgroundColor: "#DC143C"
   },
   textStyle: {
     color: "white",

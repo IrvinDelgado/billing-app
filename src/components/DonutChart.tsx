@@ -54,11 +54,11 @@ const DonutChart = (props:DonutChart) => {
 
   return (
     <View style={styles.container}>
-      <Svg height="250" width="250" viewBox="0 0 180 180">
+      {totalBills()==0? <Text style={{paddingBottom:100}}>No Bills Due</Text> :<Svg height="250" width="250" viewBox="0 0 180 180">
         <G rotation={-90} originX="90" originY="90">
           {createPieChart()}
         </G>
-      </Svg>
+      </Svg>}
       <Text style={styles.label}>${totalBills()}</Text>
     </View>
   );
